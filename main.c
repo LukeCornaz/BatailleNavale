@@ -42,6 +42,8 @@
 char carte[NOMBRE_COLONNES][NOMBRE_LIGNES], cibleLigne, b;
 int choix, cibleColonne;
 
+//Prototipe de fonction.
+void retour();
 
 /**
  * Fonction qui permet de mettre des caractères spéciaux
@@ -51,16 +53,16 @@ void carac(){
     SetConsoleOutputCP(65001);
 }
 
+void pause() {
+    system("Pause");
+}
+
 /**
  * Fonction qui va effacer ce qui se situe avant
  */
 void clear() {
     //Commande pour effacer.
     system("cls");
-}
-
-void retour(){
-    system("Pause");
 }
 
 /**
@@ -252,9 +254,13 @@ void jouer() {
 
         verfierTir();
 
-        retour();
+        pause();
 
     } while (choix != 5000);
+}
+
+void pseudo() {
+
 }
 
 void aide() {
@@ -288,14 +294,17 @@ void menu() {
         case 1:
             clear();
             printf("Vous avez choisi de lancer une partie\n");
-            retour();
             jouer();
             break;
         case 2 :
+            clear();
             printf("Vous avez choisi les pseudos\n");
+
             break;
         case 3:
+            clear();
             printf("Vous avez choisi les scores\n");
+
             break;
         case 4:
             clear();
@@ -303,11 +312,21 @@ void menu() {
             aide();
             break;
         case 5:
+            clear();
             printf("Vous avez choisi de quitter\n");
+
             break;
         default:
+            clear();
             printf("Choisissez une option existante\n");
+            retour();
     }
+}
+
+void retour(){
+    system("Pause");
+    clear();
+    menu();
 }
 
 /**
