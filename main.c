@@ -261,7 +261,10 @@ void jouer() {
 }
 
 void pseudo() {
-
+    char pseu;
+    printf("Entrez votre pseudo :\n\n");
+    scanf("%c", &pseu);
+    retour();
 }
 
 void score() {
@@ -301,6 +304,7 @@ void quitter() {
             quitter();
         }
     }
+    retour();
 }
 
 /**
@@ -325,12 +329,11 @@ void menu() {
             break;
         case 2 :
             clear();
-            printf("Vous avez choisi les pseudos\n");
-
+            pseudo();
             break;
         case 3:
             clear();
-            printf("Vous avez choisi les scores\n");
+            printf("Vous avez choisi le tableau des scores\n");
 
             break;
         case 4:
@@ -340,7 +343,6 @@ void menu() {
             break;
         case 5:
             clear();
-            printf("Vous avez choisi de quitter\n\n");
             quitter;
             break;
         default:
