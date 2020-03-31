@@ -268,7 +268,15 @@ void pseudo() {
 }
 
 void score() {
-
+    printf("Pseudo 1...............Score 1\n");
+    printf("Pseudo 2...............Score 2\n");
+    printf("Pseudo 3...............Score 3\n");
+    printf("Pseudo 4...............Score 4\n");
+    printf("Pseudo 5...............Score 5\n");
+    printf("Pseudo 6...............Score 6\n");
+    printf("Pseudo 7...............Score 7\n");
+    printf("Pseudo 8...............Score 8\n");
+    retour();
 }
 
 void aide() {
@@ -290,7 +298,7 @@ void aide() {
 void quitter() {
     char quit;
     printf("Vous êtes sûr(e) de vouloir quitter? \n\n");
-    printf("Ecrit Y pour quitter ou N pour rester : ");
+    printf("Oui (Y)     Non (N)");
     scanf("%c", &quit);
     fflush(stdin);
     if(quit == 89 || quit == 121 ) {
@@ -298,6 +306,7 @@ void quitter() {
     }
     else {
         if(quit == 78 || quit == 110){
+            clear();
             menu();
         }
         else{
@@ -334,7 +343,7 @@ void menu() {
         case 3:
             clear();
             printf("Vous avez choisi le tableau des scores\n");
-
+            score();
             break;
         case 4:
             clear();
@@ -343,7 +352,7 @@ void menu() {
             break;
         case 5:
             clear();
-            quitter;
+            quitter();
             break;
         default:
             clear();
