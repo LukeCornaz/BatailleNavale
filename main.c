@@ -44,6 +44,7 @@ int choix, cibleColonne;
 
 //Prototipe de fonction.
 void retour();
+void menu();
 
 /**
  * Fonction qui permet de mettre des caractères spéciaux
@@ -263,6 +264,10 @@ void pseudo() {
 
 }
 
+void score() {
+
+}
+
 void aide() {
     printf("\nComment jouer ?\n\n"
            "Choisissez une case allant de A1 à J10,\n"
@@ -274,6 +279,28 @@ void aide() {
            "A l'eau : O \n"
            "Coulé : C\n\n");
     retour();
+}
+
+/**
+ * Fonction permettant de quitter avec une confirmation de l'utilisateur
+ */
+void quitter() {
+    char quit;
+    printf("Vous êtes sûr(e) de vouloir quitter? \n\n");
+    printf("Ecrit Y pour quitter ou N pour rester : ");
+    scanf("%c", &quit);
+    fflush(stdin);
+    if(quit == 89 || quit == 121 ) {
+
+    }
+    else {
+        if(quit == 78 || quit == 110){
+            menu();
+        }
+        else{
+            quitter();
+        }
+    }
 }
 
 /**
@@ -313,8 +340,8 @@ void menu() {
             break;
         case 5:
             clear();
-            printf("Vous avez choisi de quitter\n");
-
+            printf("Vous avez choisi de quitter\n\n");
+            quitter;
             break;
         default:
             clear();
