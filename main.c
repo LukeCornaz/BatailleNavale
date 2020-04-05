@@ -5,6 +5,7 @@
  */
 #include <stdio.h>
 #include <windows.h>
+#include <stdbool.h>
 //Pour avoir des accents, windows.h + SetConsoleOutputCP(65001) dans le int main.
 #pragma execution_character_set("utf-8")
 
@@ -260,10 +261,29 @@ void jouer() {
     } while (choix != 5000);
 }
 
+typedef struct{
+    char name[32];
+    bool authenticated;
+} user;
+
+/**
+ * Objet pour l'identification
+ * @return authenticatingUser
+ */
+user authenticate(){
+    user authenticatingUser;
+
+    fflush(stdin);
+    scanf("%s",authenticatingUser.name);
+
+    return authenticatingUser;
+}
+
 void pseudo() {
-    char pseu;
-    printf("Entrez votre pseudo :\n\n");
-    scanf("%c", &pseu);
+    printf("Entrez votre pseudo : \n\n");
+    user pseudo = {"",false};
+    pseudo = authenticate();
+    printf("\n\nBievenue %s !\n\n", pseudo.name);
     retour();
 }
 
@@ -280,7 +300,7 @@ void score() {
 }
 
 void aide() {
-    printf("\nComment jouer ?\n\n"
+    printf("Comment jouer ?\n\n"
            "Choisissez une case allant de A1 à J10,\n"
            "le but étant de couler les 5 bateaux de l'adversaire.\n"
            "Le premier à avoir coulé tout les \n"
@@ -297,31 +317,27 @@ void aide() {
  */
 void quitter() {
     char quit;
-    printf("Vous êtes sûr(e) de vouloir quitter? \n\n");
-    printf("Oui (Y)     Non (N)");
-    scanf("%c", &quit);
+    printf("Voulez-vous vraiment quitter? \n\n");
+    printf("Oui (Y)     Non (N)\n\n");
     fflush(stdin);
+    scanf("%c", &quit);
     if(quit == 89 || quit == 121 ) {
 
     }
-    else {
-        if(quit == 78 || quit == 110){
+    else if(quit == 78 || quit == 110) {
             clear();
             menu();
-        }
-        else{
-            quitter();
-        }
     }
-    retour();
 }
 
 /**
  * Fonction affichant un menu
  */
 void menu() {
+    //Affiche le titre.
+    titre();
     //Affiche un menu.
-    printf("menu: \n");
+    printf("Menu\n\n");
     printf("1-Jouer\n");
     printf("2-Pseudo\n");
     printf("3-Scores\n");
@@ -333,21 +349,21 @@ void menu() {
     switch (choix) {
         case 1:
             clear();
-            printf("Vous avez choisi de lancer une partie\n");
             jouer();
             break;
         case 2 :
             clear();
+            printf("-----Pseudo-----\n\n");
             pseudo();
             break;
         case 3:
             clear();
-            printf("Vous avez choisi le tableau des scores\n");
+            printf("-----Scores-----\n\n");
             score();
             break;
         case 4:
             clear();
-            printf("Vous avez choisi l'aide\n");
+            printf("-----Aide-----\n\n");
             aide();
             break;
         case 5:
@@ -373,9 +389,6 @@ void retour(){
 int main() {
     //Sers à afficher les caractères spéciaux.
     carac();
-
-    // Afficher titre
-    titre();
 
     // Afficher le menu
     menu();
