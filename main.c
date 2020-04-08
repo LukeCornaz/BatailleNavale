@@ -1,7 +1,7 @@
 /**
  * Author : Luke Cornaz
  * Date : 08.03.2020
- * Version : 0.1
+ * Version : 1.0
  */
 #include <stdio.h>
 #include <windows.h>
@@ -222,12 +222,12 @@ void changerValeurCarte() {
             printf("Touché !\n\n");
         }
 
-    } else {
-        carte[cibleColonne][cibleLigne] = 'O';
+        } else {
+            carte[cibleColonne][cibleLigne] = 'O';
 
-        printf("A l'eau !\n\n");
-    }
-    printf("");
+            printf("A l'eau !\n\n");
+        }
+        printf("");
 }
 
 /**
@@ -287,8 +287,8 @@ void pseudo() {
     retour();
 }
 
-void score() {
-    printf("Pseudo 1...............Score 1\n");
+void score(authenticate) {
+    printf("...............Score 1\n");
     printf("Pseudo 2...............Score 2\n");
     printf("Pseudo 3...............Score 3\n");
     printf("Pseudo 4...............Score 4\n");
